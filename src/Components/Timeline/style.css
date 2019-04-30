@@ -1,0 +1,19 @@
+.timeline-page{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right:0;
+    bottom:0;
+    overflow: scroll;
+    padding-bottom: 100px;
+    background: radial-gradient( #DAC2FC, #C7C3FC, #B3C3FC);
+}
+
+.timeline-page > h1{
+    margin-left: 40%;
+    margin-top: 5%;
+    padding-bottom:20px;
+    font-size: 70px;
+    color:white;
+    text-shadow: 3px 3px 5px black;
+}

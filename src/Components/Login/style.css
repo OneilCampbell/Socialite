@@ -1,0 +1,174 @@
+.sign {
+  color: #83B0FC;
+}
+.sign:hover {
+  color: blue;
+}
+.form-header {
+  height: 300px;
+}
+.space {
+  width: inherit;
+  height: 40px;
+}
+.space2 {
+  width: inherit;
+  height: 10px;
+}
+.column {
+  height: 720px;
+  width: 500px;
+  margin-top: 30%;
+}
+
+.lock {
+  color: white;
+  margin-left: 40%;
+  font-size: 100px;
+  margin-top: 5%;
+}
+
+.lock-login {
+  color: white;
+  margin-left: 26%;
+  font-size: 80px;
+  text-transform: uppercase;
+}
+
+.test {
+  color: #BFC3FC;
+}
+
+.main-login {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: 9;
+  background-image: linear-gradient(90deg, rgb(208, 93, 223), #C7C3FC, rgb(141, 215, 250));
+}
+
+.info-app {
+  flex: 2;
+  width: 1100px;
+  height: 900px;
+
+}
+
+.logo-name {
+  color: white;
+  font-size: 200px;
+  font-family: 'Allerta Stencil', sans-serif;
+  margin-left: 8%;
+  text-shadow: 2px 2px 2px #606060;
+  position: absolute;
+  margin-top: 15%;
+}
+
+.mdbcontainer {
+  flex: 1;
+  margin-top:50px;
+}
+
+.slogan {
+  color: white;
+  position: absolute;
+  margin-top: 26%;
+  margin-left: 15%;
+  font-size: 48px;
+  font-family: 'Petit Formal Script', cursive;
+  text-shadow: 3px 3px 1px #606060;
+}
+
+.letter1{
+  animation: grow1 1s ease infinite;
+}
+
+@keyframes grow1{
+  50%{
+    font-size: 240px;
+    text-shadow: 2px 2px 2px black;
+  }
+}
+
+.letter2{
+  animation: grow2 1s ease .1s infinite;
+}
+
+@keyframes grow2{
+  50%{
+    font-size: 240px;
+    text-shadow: 2px 2px 2px black;
+  }
+}
+.letter3{
+  animation: grow3 1s ease .2s infinite;
+}
+
+@keyframes grow3{
+  50%{
+    font-size: 240px;
+    text-shadow: 2px 2px 2px black;
+  }
+}
+.letter4{
+  animation: grow4 1s ease .3s infinite;
+}
+
+@keyframes grow4{
+  50%{
+    font-size: 240px;
+    text-shadow: 2px 2px 2px black;
+  }
+}
+.letter5{
+  animation: grow5 1s ease .4s infinite;
+}
+
+@keyframes grow5{
+  50%{
+    font-size: 240px;
+    text-shadow: 2px 2px 2px black;
+  }
+}
+.letter6{
+  animation: grow6 1s ease .5s infinite;
+}
+
+@keyframes grow6{
+  50%{
+    font-size: 240px;
+    text-shadow: 2px 2px 2px black;
+  }
+}
+.letter7{
+  animation: grow7 1s ease .6s infinite;
+}
+
+@keyframes grow7{
+  50%{
+    font-size: 240px;
+    text-shadow: 2px 2px 2px black;
+  }
+}
+.letter8{
+  animation: grow8 1s ease .7s infinite;
+}
+
+@keyframes grow8{
+  50%{
+    font-size: 240px;
+    text-shadow: 2px 2px 2px black;
+  }
+}
+.letter9{
+  animation: grow9 1s ease .8s infinite;
+}
+
+@keyframes grow9{
+  50%{
+    font-size: 240px;
+    text-shadow: 2px 2px 2px black;
+  }
+}

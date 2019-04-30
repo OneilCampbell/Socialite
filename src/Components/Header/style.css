@@ -1,0 +1,18 @@
+header{
+    position: absolute;
+    z-index:2;
+}
+
+a{
+    font-size: 30px;
+    text-shadow: 3px 3px 5px black;
+    color:white;
+    padding:20px;
+}
+
+a:hover{
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+    font-size: 35px;
+}

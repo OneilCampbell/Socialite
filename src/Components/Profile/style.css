@@ -1,0 +1,81 @@
+.profile-page{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right:0;
+    bottom:0;
+    overflow: scroll;
+    padding-bottom: 100px;
+    background-image: linear-gradient(90deg, rgb(208, 93, 223), #C7C3FC, rgb(141, 215, 250));  
+}
+
+.info{
+    margin-left: 200px;
+    font-size:40px;
+}
+
+.info:hover{
+    cursor: pointer;
+}
+
+.center{
+    width:20%;
+    margin: 8% 35%;
+    border-radius:20%;
+    padding:5px; 
+}
+
+.info-card{
+    margin-left: -100px;
+    margin-top: 200px;
+    width:700px;
+    padding: 20px;
+    text-align:center;
+    background-image: linear-gradient(90deg, rgb(208, 93, 223), #C7C3FC, rgb(141, 215, 250));
+    background-size: 400% 400%;
+    animation: fluctuate 15s ease infinite;
+}
+
+@keyframes fluctuate{
+    0%{background-position:0% 53%}
+    50%{background-position:100% 48%}
+    100%{background-position:0% 53%}
+}
+
+.card-image > img {
+    height:250px;
+    width:550px;
+    margin-left:5px;
+}
+
+.users-name{
+    font-size:50px;
+    font-weight:bold;
+    text-align: center;
+    margin-left:150px;
+    margin-bottom:0;
+}
+
+.tagline{
+  font-size:30px;
+  font-style: oblique;
+}
+
+.email, .handle{
+    font-size:35px;
+    margin-top:0;
+    margin-bottom:0;
+    font-style: italic;
+    text-align:center;
+}
+
+.email{
+    margin-left:150px;
+}
+
+.handle{
+    width:150px;
+    font-weight: bold;
+    margin-left:250px;
+}
+

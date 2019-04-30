@@ -1,0 +1,18 @@
+.user-posts{
+    width: 80%;
+    margin-left:10%;
+    background:#eee;
+    box-shadow: 5px 5px 5px black;
+    margin-top:10px;
+    font-size:35px;
+    margin-bottom:20px;
+}
+
+.posts-picture{
+    height: 330px;
+    width:600px;
+}
+
+a{
+    text-shadow: none;
+}
