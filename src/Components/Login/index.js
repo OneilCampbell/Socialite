@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import {Link, Redirect} from "react-router-dom";
 import axios from "axios";
 import "./style.css";
 import {
@@ -18,6 +19,8 @@ class Login extends Component {
       super();
       this.state = {
        allUsersData: [],
+       userInfo: false,
+       isLoggedIn: false,
       }
    }
 
@@ -47,37 +50,45 @@ class Login extends Component {
     for(let user of allUsers){
       if (user.username === username && user.password === password){
         userInfo = user;
-        this.props.getProfileProps(userInfo);
+        let isLoggedIn = true;
+        this.setState({userInfo, isLoggedIn});
+        return;
       }
     }
      
    }
 
    render() {
+     let allUsersData =this.state.allUsersData;
+     let isLoggedIn = this.state.isLoggedIn;
+     let userInfo = this.state.userInfo;
     return(
+      !isLoggedIn 
+      ?
       <div className="main-login">
         <div className="info-app">
-        <h1 className="logo-name">
-        <span className="letter1">S</span>
-        <span className="letter2">o</span>
-        <span className="letter3">c</span>
-        <span className="letter4">i</span>
-        <span className="letter5">a</span>
-        <span className="letter6">l</span>
-        <span className="letter7">i</span>
-        <span className="letter8">t</span>
-        <span className="letter9">e</span>
-        </h1>
-        <br/>
-        <br/>
-        <p className="slogan">the best way to stay connected..</p></div>
+          <h1 className="logo-name">
+            <span className="letter1">S</span>
+            <span className="letter2">o</span>
+            <span className="letter3">c</span>
+            <span className="letter4">i</span>
+            <span className="letter5">a</span>
+            <span className="letter6">l</span>
+            <span className="letter7">i</span>
+            <span className="letter8">t</span>
+            <span className="letter9">e</span>
+          </h1>
+          <br/>
+          <br/>
+          <p className="slogan">the best way to stay connected..</p>
+        </div>
         <div className="mdbcontainer">
           <MDBContainer>
             <MDBRow>
               <MDBCol md="6">
                 <MDBCard  className="column">
-                  <MDBCardBody>
-                    <MDBCardHeader className="form-header deep-blue-gradient rounded">
+                  <MDBCardBody className="login-form-square">
+                    <MDBCardHeader className="form-header deep-blue-gradient rounded login-square">
                       <h3 className="my-3">
                         <MDBIcon icon="lock" className="lock"/> <br /><span className="lock-login">Login</span>
                       </h3>
@@ -96,18 +107,18 @@ class Login extends Component {
                         </div>
                         <div className="text-center mt-4">
                           <MDBBtn
-                            color="light-blue"
-                            className="mb-3"
-                            type="submit"
+                          color="light-blue"
+                          className="mb-3"
+                          type="submit"
                           >
-                            Login
+                          Login
                           </MDBBtn>
                         </div>
                       </form>
                     <div className="space2"> </div>
                     <MDBModalFooter>
                       <div className="font-weight-light">
-                        <p>Not a member? <span className="sign">Sign Up</span></p>
+                        <p>Not a member? <span className="sign"><Link to={{pathname:"/signup", state:{allUsersData}}}>Sign Up</Link></span></p>
                       </div>
                     </MDBModalFooter>
                   </MDBCardBody>
@@ -117,6 +128,8 @@ class Login extends Component {
           </MDBContainer>
           </div>
         </div>
+        :
+        <Redirect to={{pathname:"/users", state:{...userInfo}}} />
     );
   }
 }
