@@ -7,7 +7,8 @@ class Comments extends Component {
     super(props)
     this.state = {
       content: props.content,
-      canEdit: false
+      canEdit: false,
+      user: "",
     }
   }
 
@@ -42,33 +43,62 @@ class Comments extends Component {
     this.setState({ content: event.target.value })
   }
 
+  getCommentUser = async () => {
+    await axios
+    .get(`/users/${this.props.userId}`)
+    .then(response => {
+      let user = response.data;
+      let isOwnComment = (this.props.currentUserId === user.id);
+      this.setState(prevState => ({...prevState, user, isOwnComment}));
+    })
+  }
+
+  componentDidMount(){
+    this.getCommentUser();
+  }
+
   render(){
-    const edit = this.state.canEdit
+    const edit = this.state.canEdit;
+    const user = this.state.user;
+    const isOwnComment = this.state.isOwnComment;
     return (
       <div className="post-comments">
         <div className="card">
-          <header className="card-header">
-            <a href="#" className="card-header-icon" aria-label="more options">
-            </a>
-          </header>
           <div className="card-content">
-            <div className="content">
-            {this.props.content}
+            <div className="comment-user-content">
+              <img className="comment-user-picture" src={user ? user.image : ""} alt="user" />
+              <h1 className="comments-user"> {user ? `${((user.username.charAt(0)).toUpperCase())+ user.username.slice(1)}:` : null} </h1>
             </div>
+            <p className="comments-content">{this.props.content}</p>
           </div>
-          <footer className="card-footer">
-            <a href="#" className="card-footer-item">Save</a>
-            <a href="#" className="delete" className="card-footer-item">
-              <button className="card-footer-item" onClick={this.toggleEdit}>
-                <i className="fas fa-user-edit"></i>
-              </button>
-            </a>
-            <a href="#" className="card-footer-item">  
-              <button onClick={this.deleteComment}>
-                <i className="far fa-trash-alt"></i>
-              </button>
-            </a>
-          </footer>
+          { isOwnComment
+            ?
+            <footer className="card-footer">
+              <span>
+                <button className="card-footer-item" onClick={this.toggleEdit}>
+                  <i className="fas fa-user-edit"></i>
+                </button>
+              </span>
+              <span>  
+                <button className="card-footer-item" onClick={this.deleteComment}>
+                  <i className="far fa-trash-alt"></i>
+                </button>
+              </span>
+            </footer>
+            :
+            (  this.props.isOwnPost
+              ?
+              <footer className="card-footer">
+                <span>  
+                  <button className="card-footer-item" onClick={this.deleteComment}>
+                    <i className="far fa-trash-alt"></i>
+                  </button>
+                </span>
+              </footer>
+              :
+              null 
+            )
+          }
         </div>
         {edit ? (
           <div>
