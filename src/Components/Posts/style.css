@@ -1,18 +1,48 @@
 .user-posts{
-    width: 80%;
-    margin-left:10%;
+    width: 70%;
+    margin-left:15%;
     background:#eee;
     box-shadow: 5px 5px 5px black;
     margin-top:10px;
-    font-size:35px;
+    font-size:30px;
     margin-bottom:20px;
 }
 
+.user-posts > .media{
+    height:auto;
+    margin-bottom: 5px;
+    padding-top:10px;
+    padding-left:10px;
+}
+
+.user-posts > p{
+    margin-bottom:0;
+}
+
+.post-info{
+    margin-bottom: 0;
+    margin-left: -8%;
+    padding-right: 15px;
+}
+
 .posts-picture{
-    height: 330px;
-    width:600px;
+    height: 250px;
+    width:auto;
+}
+
+.post-hashtags{
+    color:rgb(69, 69, 250);
 }
 
 a{
     text-shadow: none;
 }
+
+.post-edit-buttons, .create-comment{
+    font-size:25px;
+    margin-left:15px;
+    margin-bottom:15px;
+    border-radius:5px;
+    box-shadow: 1px 1px 5px;
+}
+
