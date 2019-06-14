@@ -6,8 +6,9 @@ const Header = (props) => {
     return (
         <header>
             <nav>
-                <Link to={`/users/${props.id}`}>Profile</Link>
-                <Link to={"/timeline"}>Timeline</Link>
+                <Link to={{pathname:"/users", state:{...props.userInfo}}}>Profile</Link>
+                <Link to={{pathname:"/timeline", state:{...props}}}>Timeline</Link>
+                <span className="move-right"> <Link to="/">Log Out</Link> </span>
             </nav>
         </header>
     );
