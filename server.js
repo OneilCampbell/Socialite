@@ -35,6 +35,18 @@ app.get("/users/:id", async (req,res) => {
     }
 })
 
+app.post("/users", async (req,res) => {
+  try {
+      await User.create(req.body);
+      res.send(true);
+  } catch (error) {
+      console.log(error);
+      res.status(500).json({
+          message: error.message
+      });
+  }
+})
+
 app.get("/posts", async (req, res) => {
     try {
         const allPosts = await Post.findAll({order: [['updatedAt', 'DESC']]});
