@@ -15,23 +15,27 @@
   width: inherit;
   height: 10px;
 }
+
 .column {
-  height: 720px;
-  width: 500px;
-  margin-top: 30%;
+  height: 95%;
+  width: 150%;
+  margin-left:30%
+}
+
+.login-square{
+  height:35%;
 }
 
 .lock {
   color: white;
   margin-left: 40%;
-  font-size: 100px;
-  margin-top: 5%;
+  font-size: 70px;
 }
 
 .lock-login {
   color: white;
   margin-left: 26%;
-  font-size: 80px;
+  font-size: 60px;
   text-transform: uppercase;
 }
 
@@ -41,42 +45,44 @@
 
 .main-login {
   display: flex;
-  flex-direction: row;
-  width: 100vw;
-  height: 100vh;
   position: absolute;
-  z-index: 9;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
   background-image: linear-gradient(90deg, rgb(208, 93, 223), #C7C3FC, rgb(141, 215, 250));
 }
 
 .info-app {
-  flex: 2;
-  width: 1100px;
-  height: 900px;
-
+  flex: 1;
+  height: 100%;
 }
 
 .logo-name {
   color: white;
-  font-size: 200px;
+  font-size: 90px;
   font-family: 'Allerta Stencil', sans-serif;
   margin-left: 8%;
   text-shadow: 2px 2px 2px #606060;
   position: absolute;
-  margin-top: 15%;
+  margin-top: 7%;
 }
 
 .mdbcontainer {
   flex: 1;
-  margin-top:50px;
+  margin-top:1%;
+  height: 80%;
+  width: 60%;
 }
 
 .slogan {
+  width: 40%;
+  text-align:center;
   color: white;
   position: absolute;
-  margin-top: 26%;
-  margin-left: 15%;
-  font-size: 48px;
+  margin-top: 17%;
+  margin-left: 5%;
+  font-size: 50px;
   font-family: 'Petit Formal Script', cursive;
   text-shadow: 3px 3px 1px #606060;
 }
@@ -87,7 +93,7 @@
 
 @keyframes grow1{
   50%{
-    font-size: 240px;
+    font-size: 100px;
     text-shadow: 2px 2px 2px black;
   }
 }
@@ -98,7 +104,7 @@
 
 @keyframes grow2{
   50%{
-    font-size: 240px;
+    font-size: 100px;
     text-shadow: 2px 2px 2px black;
   }
 }
@@ -108,7 +114,7 @@
 
 @keyframes grow3{
   50%{
-    font-size: 240px;
+    font-size: 100px;
     text-shadow: 2px 2px 2px black;
   }
 }
@@ -118,7 +124,7 @@
 
 @keyframes grow4{
   50%{
-    font-size: 240px;
+    font-size: 100px;
     text-shadow: 2px 2px 2px black;
   }
 }
@@ -128,7 +134,7 @@
 
 @keyframes grow5{
   50%{
-    font-size: 240px;
+    font-size: 100px;
     text-shadow: 2px 2px 2px black;
   }
 }
@@ -138,7 +144,7 @@
 
 @keyframes grow6{
   50%{
-    font-size: 240px;
+    font-size: 100px;
     text-shadow: 2px 2px 2px black;
   }
 }
@@ -148,7 +154,7 @@
 
 @keyframes grow7{
   50%{
-    font-size: 240px;
+    font-size: 100px;
     text-shadow: 2px 2px 2px black;
   }
 }
@@ -158,7 +164,7 @@
 
 @keyframes grow8{
   50%{
-    font-size: 240px;
+    font-size: 100px;
     text-shadow: 2px 2px 2px black;
   }
 }
@@ -168,7 +174,7 @@
 
 @keyframes grow9{
   50%{
-    font-size: 240px;
+    font-size: 100px;
     text-shadow: 2px 2px 2px black;
   }
 }
