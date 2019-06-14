@@ -1,0 +1,41 @@
+.post-comments{
+    width: 98%;
+    margin-left:1%;
+    margin-bottom:15px;
+}
+
+.comment-user-content{
+    display:flex;
+}
+
+.comment-user-picture{
+    height:5%;
+    width:100px;
+    margin:5px;
+    box-shadow: 1px 1px 5px black;
+}
+
+.comments-user, .comments-content{
+    width: auto;
+    margin-bottom:5px;
+}
+
+.comments-user{
+    font-weight: bold;
+}
+
+.comments-content{
+    background: rgb(236, 240, 252);
+    margin-bottom:0px;
+}
+
+.card-footer{
+    padding:6px 5px;
+}
+
+.card-footer-item{
+    font-size:20px;
+    margin-left:10px;
+    box-shadow: 1px 1px 5px black;
+    border-radius:5px;
+}
