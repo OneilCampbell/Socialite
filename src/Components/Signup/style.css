@@ -1,0 +1,46 @@
+.sign-up-page{
+    display: flex;
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background-image: linear-gradient(90deg, rgb(141, 215, 250), #C7C3FC, rgb(208, 93, 223));
+}
+
+.signup-container{
+    height:70%;
+}
+
+.signup-form-div{
+    height:80%;
+}
+
+.signup-square{
+    height:15%;
+    padding-top:0px;
+    padding-bottom:5px;
+}
+
+.signup-form-square{
+    height:600px;
+}
+
+.signup-error-message{
+    margin-bottom: 0px;
+    text-align:center;
+    color:red;
+}
+
+.sign-up-my-3{
+    margin-top:0px;
+    padding-bottom:15px;
+    height:100%;
+    
+}
+
+.signup-words{
+    margin-top:-10px;
+    margin-bottom:12px;
+    font-size:50px;
+}
