@@ -1,18 +1,23 @@
 header{
     position: absolute;
     z-index:2;
+    width:100%;
 }
 
-a{
+header > nav > a, header>nav>span>a{
     font-size: 30px;
     text-shadow: 3px 3px 5px black;
     color:white;
     padding:20px;
 }
 
-a:hover{
+header > nav > a:hover, header>nav>span>a:hover{
     text-decoration: none;
     color: black;
     cursor: pointer;
     font-size: 35px;
+}
+
+.move-right{
+   margin-left: 60%; 
 }
