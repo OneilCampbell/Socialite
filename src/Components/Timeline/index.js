@@ -24,7 +24,6 @@ class Timeline extends Component {
    }
 
    render() {
-      console.log(this.props);
       const allPosts = this.state.allPosts;
       let userInfo = this.props.location.state.userInfo;
       const everyPost = allPosts && allPosts.map(post => <Posts key={post.id} postInfo={{...post}} currentUserInfo={{...userInfo}}/>)

@@ -76,7 +76,6 @@ class Signup extends Component{
     }
 
     render(){
-        console.log(this.props);
         let newUserInfo = this.state.newUserInfo;
         let newUserAdded = this.state.newUserAdded;
         let validUsername = this.state.validUsername;
