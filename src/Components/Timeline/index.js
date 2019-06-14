@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import Posts from '../Posts'
+import Posts from '../Posts';
+import Header from '../Header';
 import axios from "axios";
 import "./style.css";
 
@@ -23,10 +24,13 @@ class Timeline extends Component {
    }
 
    render() {
+      console.log(this.props);
       const allPosts = this.state.allPosts;
-      const everyPost = allPosts && allPosts.map(post => <Posts key={post.id} postInfo={{...post}} userInfo={{ ...this.props }}/>)
+      let userInfo = this.props.location.state.userInfo;
+      const everyPost = allPosts && allPosts.map(post => <Posts key={post.id} postInfo={{...post}} currentUserInfo={{...userInfo}}/>)
       return (
         <div className="timeline-page">
+         <Header userInfo={{...userInfo}} comingFrom={"timeline"}/>
           <h1>Timeline</h1>
           {everyPost}
         </div>
