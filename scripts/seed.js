@@ -23,12 +23,12 @@ const sandiPostOne = await Post.create({
   image: 'https://uiaa-web.azureedge.net/wp-content/uploads/2016/09/mountain-protection-award-conservation-1200x800-1200x700.jpg'
 });
 
-const sandiCommentOne = await Comment.create({
-  content: 'Liar!!!'
+const oneilCommentOne = await Comment.create({
+  content: 'Liar!! I was hiking yesterday, and I did not see you on the trail.'
 })
 
-const sandiCommentTwo = await Comment.create({
-  content: 'You went without me? :('
+const claudiaCommentOne = await Comment.create({
+  content: 'You went without me? :( You know how much I love hiking.'
 })
 
   // post 2
@@ -38,18 +38,14 @@ const sandiPostTwo = await Post.create({
   image:'https://images.homedepot-static.com/productImages/92fe7d0e-27f3-4d34-b5b7-2f6908554f75/svn/bubble-gum-pink-curtains-drapes-ek5317-01-2-108g-64_1000.jpg'
 });
 
-const sandiCommentThree = await Comment.create({
-  content: 'These?'
+const claudiaCommentTwo = await Comment.create({
+  content: 'These? Surely you can find nicer ones somewhere else, no?'
 });
 
-const sandiCommentFour = await Comment.create({
-  content: 'They are really nice'
+const oneilCommentTwo = await Comment.create({
+  content: 'They are really nice. Not my style but perfect for you.'
 });
 
-const sandiPostThree = await Post.create({
-  content:'Played some Soccer, a couple weeks ago',
-  image: 'https://heccc.deltacollege.edu/div/athletics/soccer/images/SJR_6996-590.jpg'
-})
 
 // oneil
 
@@ -69,12 +65,12 @@ const oneilPostOne = await Post.create({
     image: 'https://www.nps.gov/subjects/nationaltrailssystem/images/NationalScenicTrails.JPG?maxwidth=1200&autorotate=false'
   })
 
-const oneilCommentOne = await Comment.create({
-    content: 'She knows.'
+const claudiaCommentThree = await Comment.create({
+    content: 'Maybe she just wants a hiking buddy.'
   })
 
-const oneilCommentTwo =  await Comment.create({
-    content: 'She wants you.'
+const sandiCommentOne =  await Comment.create({
+    content: 'Orrr she\'s a cannibal and she is hungry.'
   })
 
   // post 2
@@ -84,12 +80,12 @@ const oneilPostTwo = await Post.create({
     image: 'https://daily.jstor.org/wp-content/uploads/2018/06/soccer_europe_1050x700.jpg'
   })
 
-const oneilCommentThree = await Comment.create({
-  content: 'If I had a dime for every person that calls football soccer...'
+const sandiCommentTwo = await Comment.create({
+  content: 'iF i HaD A dImE fOr EvErY pErSoN tHaT cAlLs FoOtBaLl SoCcEr...'
   })
 
-const oneilCommentFour = await Comment.create({
-    content: 'Soccer soccer soccer'
+const claudiaCommentFour = await Comment.create({
+    content: 'Soccer soccer soccer. Hahaha, just kidding.'
   })
 
 // claudia
@@ -110,12 +106,12 @@ const claudiaPostOne = await Post.create({
     image: 'https://achieve.lausd.net/cms/lib/CA01000043/Centricity/Domain/800/high-school.jpg'
   })
 
-const claudiaCommentOne = await Comment.create({
-    content: 'always.'
+const sandiCommentThree = await Comment.create({
+    content: 'You always forget to do your homework!'
   })
 
-const claudiaCommentTwo = await Comment.create({
-    content: 'Great :)'
+const oneilCommentThree = await Comment.create({
+    content: 'Great, homework is for nerds anyways :)'
   })
 
     // post 2
@@ -125,38 +121,37 @@ const claudiaPostTwo = await Post.create({
     image: 'https://images.template.net/wp-content/uploads/2017/01/23230913/Surreal-Acrylic-Painting.jpg'
   })
 
-const claudiaCommentThree = await Comment.create({
-    content: 'Please do.'
+const sandiCommentFour = await Comment.create({
+    content: 'Please do, maybe you will remember to do your homework there lol.'
   })
 
-const claudiaCommentFour = await Comment.create({
-    content: 'Count me in next time.'
+const oneilCommentFour = await Comment.create({
+    content: 'Count me in next time, I am always down to explore the world.'
   })
 
   // post to user
   await sandiPostOne.setUser(sandi);
   await sandiPostTwo.setUser(sandi);
-  await sandiPostThree.setUser(sandi);
   await oneilPostOne.setUser(oneil);
   await oneilPostTwo.setUser(oneil);
   await claudiaPostOne.setUser(claudia);
   await claudiaPostTwo.setUser(claudia);
 
   // comment to post
-  await sandiCommentOne.setPost(sandiPostOne);
-  await sandiCommentTwo.setPost(sandiPostOne);
-  await sandiCommentThree.setPost(sandiPostTwo);
-  await sandiCommentFour.setPost(sandiPostTwo);
+  await sandiCommentOne.setPost(oneilPostOne);
+  await sandiCommentTwo.setPost(oneilPostTwo);
+  await sandiCommentThree.setPost(claudiaPostOne);
+  await sandiCommentFour.setPost(claudiaPostTwo);
 
-  await oneilCommentOne.setPost(oneilPostOne);
-  await oneilCommentTwo.setPost(oneilPostOne);
-  await oneilCommentThree.setPost(sandiPostThree);
-  await oneilCommentFour.setPost(oneilPostTwo);
+  await oneilCommentOne.setPost(sandiPostOne);
+  await oneilCommentTwo.setPost(sandiPostTwo);
+  await oneilCommentThree.setPost(claudiaPostOne);
+  await oneilCommentFour.setPost(claudiaPostTwo);
 
-  await claudiaCommentOne.setPost(claudiaPostOne);
-  await claudiaCommentTwo.setPost(sandiPostOne);
-  await claudiaCommentThree.setPost(claudiaPostTwo);
-  await claudiaCommentFour.setPost(sandiPostThree);
+  await claudiaCommentOne.setPost(sandiPostOne);
+  await claudiaCommentTwo.setPost(sandiPostTwo);
+  await claudiaCommentThree.setPost(oneilPostOne);
+  await claudiaCommentFour.setPost(oneilPostTwo);
 
   // commment to user
   await sandiCommentOne.setUser(sandi);
