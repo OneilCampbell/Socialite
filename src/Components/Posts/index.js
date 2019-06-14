@@ -10,7 +10,8 @@ class Posts extends Component {
       usersComments: null,
       canEdit: false,
       canCreate: false,
-      content: props.postInfo.content
+      content: props.postInfo.content,
+      postUser: "",
     };
   }
 
@@ -37,7 +38,7 @@ class Posts extends Component {
   updatePost = async () => {
     const updatedPost = {
       content: this.state.content,
-      userId: this.props.userInfo.userId
+      userId: this.props.currentUserInfo.userId
     };
     await axios
       .put(`/posts/${this.props.postInfo.id}`, updatedPost)
@@ -56,7 +57,7 @@ class Posts extends Component {
   createComment = async () => {
     const createComment = {
       content: this.state.content,
-      userId: this.props.userInfo.userId,
+      userId: this.props.currentUserInfo.id,
       postId: this.props.postInfo.id
     };
     await axios
@@ -77,55 +78,124 @@ class Posts extends Component {
       });
   };
 
+  getPostsUsersInfo = async () => {
+    await axios
+      .get(`/users/${this.props.postInfo.userId}`)
+      .then(response => {
+        const postUser = response.data;
+        this.setState({postUser});
+      })
+  }
+
+  convertToDateFormat = timeString => {
+    let firstBreak = timeString.indexOf("T");
+    let firstHalf = timeString.substring(0, firstBreak);
+    firstHalf = firstHalf.replace("-", "/");
+    let secondBreak = timeString.indexOf(".");
+    let secondHalf = timeString.substring(firstBreak+1, secondBreak);
+    return `${firstHalf} ${secondHalf}`;
+  }
+
+  convertToMinutesAgo = numOfMs => {
+    let amount = 0;
+    let timeIn = "";
+    switch(true){
+      case numOfMs >= 1000 && numOfMs < 60000:
+        amount = numOfMs / 1000;
+        timeIn = "s";
+      break;
+
+      case numOfMs >= 60000 && numOfMs < 3600000:
+        amount = numOfMs / 60000;
+        timeIn = "m";
+      break;
+
+      case numOfMs >= 3600000 && numOfMs < 86400000:
+        amount = numOfMs / 3600000;
+        timeIn = "h";
+      break;
+
+      case numOfMs >= 86400000:
+        amount = numOfMs / 86400000;
+        timeIn = "d";
+      break;
+
+      default:
+      break;
+    }
+    amount = Math.floor(amount);
+    return amount+timeIn;
+  }
+
+  getTimeSince = () =>{
+    let currentTime = new Date();
+    let postLastUpdated = this.convertToDateFormat(this.props.postInfo.updatedAt);
+    let diff = Math.abs(currentTime - new Date(postLastUpdated));
+    let timeSince = this.convertToMinutesAgo(diff);
+    return `  ${timeSince}`;
+  }
+
   componentDidMount() {
+    this.getPostsUsersInfo();
     this.getUsersCommentsData();
   }
 
 
   render(){
+    const timeSince = this.getTimeSince();
     const usersComments = this.state.usersComments;
+    const postUser = this.state.postUser;
+    const isOwnPost = (this.props.currentUserInfo.id === this.props.postInfo.userId);
     const allUsersComments = usersComments === null ? usersComments :
-    usersComments.map(comment => ( <Comments key={comment.id} {...comment} reRender={this.getUsersCommentsData} />));
+    usersComments.map(comment => ( <Comments key={comment.id} {...comment} reRender={this.getUsersCommentsData} isOwnPost={isOwnPost} currentUserId={this.props.currentUserInfo.id} />));
     const edit = this.state.canEdit;
     const create = this.state.canCreate;
     return (
       <div className="user-posts" >
         <article className="media">
+        { this.props.postInfo.image ?
           <figure className="media-left">
             <p className="image is-64x64">
-              <img className="posts-picture" src={this.props.postInfo.image}/>
+              <img className="posts-picture" src={this.props.postInfo.image} alt="users post"/>
             </p>
           </figure>
+          : null
+          }
           <div className="media-content">
             <div className="content">
-              <p>
-                <strong>{`${this.props.userInfo.firstname} ${this.props.userInfo.lastname}`}</strong> <small>@{this.props.userInfo.username}</small> <small>31m</small>
+              <p className="post-info">
+                <strong>{`${postUser.firstname || ""} ${postUser.lastname || ""}     `}</strong> <small>@{postUser.username || ""}</small> <small>{timeSince}</small>
                 <br/>
                 {this.props.postInfo.content}
                 <br/>
-                <a href="#">@dreamteam</a> <a href="#">#dopeapp🔥</a> <a href="#">#butwhydidtheygosohardtho</a>
+                <span className="post-hashtags">@Socialite</span> <span className="post-hashtags">#DopeApp<span role="img" aria-label="fire">🔥</span></span>
+                <span className="post-hashtags">#SocializeWithSocialite</span>
               </p>
             </div>
             <nav className="level is-mobile">
               <div className="level-left">
-                <a className="level-item">
+                <span className="level-item">
                   <span className="icon is-small"><i className="fas fa-reply"></i></span>
-                </a>
-                <a className="level-item">
+                </span>
+                <span className="level-item">
                   <span className="icon is-small"><i className="fas fa-retweet"></i></span>
-                </a>
-                <a className="level-item">
+                </span>
+                <span className="level-item">
                   <span className="icon is-small"><i className="fas fa-heart"></i></span>
-                </a>
+                </span>
               </div>
             </nav>
           </div>
-          <div className="media-right">
-            <button className="delete"></button>
-          </div>
         </article>
-        <button onClick={this.toggleEdit}><i className="fas fa-user-edit"></i></button>
-        <button onClick={this.deletePost}><i className="far fa-trash-alt"></i></button>
+        { isOwnPost 
+          ?
+          <div>
+            <button className="post-edit-buttons" onClick={this.toggleEdit}><i className="fas fa-user-edit"></i></button>
+            <button className="post-edit-buttons" onClick={this.deletePost}><i className="far fa-trash-alt"></i></button>
+          </div>
+          :
+          null
+        }
         {edit ? (
             <div>
                 <input onChange={this.handleChange} placeholder="edit" type="text" name="content" value={this.state.content} />
@@ -135,8 +205,8 @@ class Posts extends Component {
             null
         }
         {allUsersComments}
-        <button onClick={this.toggleCreate}><i className="fas fa-comment-medical"></i></button>
-        <div className="create-comment">
+        <button className="create-comment" onClick={this.toggleCreate}><i className="fas fa-comment-medical"></i></button>
+        <div>
           {create
           ? (
             <div>
